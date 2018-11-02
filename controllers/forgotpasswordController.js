@@ -41,8 +41,8 @@ exports.forgotPassword = function(req,res){
             pass: 'gaur@123'
           }
         });
-        host="localhost:4200" 
-        resetpasswordlink="http://"+host+"/passwordreset/"+randomToken;
+        host="angularnodelogin.herokuapp.com" 
+        resetpasswordlink="https://"+host+"/passwordreset/"+randomToken;
         const mailOptions = {
           from: 'amankumargaur1995@gmail.com',
           to:email,

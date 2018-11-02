@@ -93,8 +93,8 @@ exports.signUp = function(req,res){
                 pass: 'gaur@123'
               }
             }); 
-            host="localhost:4200" 
-            verificationlink="http://"+host+"/emailverify/"+randomToken;
+            host="angularnodelogin.herokuapp.com" 
+            verificationlink="https://"+host+"/emailverify/"+randomToken;
             const mailOptions = {
               from: 'amankumargaur1995@gmail.com',
               to:email,

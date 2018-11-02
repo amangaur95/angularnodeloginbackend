@@ -5,7 +5,7 @@ var User = require('../models/User');
 passport.use(new LinkedInStrategy({
     clientID: "81uh8836c8uv82",
     clientSecret: "nPmi0D58WPNnRn4r",
-    callbackURL: "http://localhost:3000/auth/linkedin/callback",
+    callbackURL: "https://angularnodelogin.herokuapp.com/auth/linkedin/callback",
     scope: ['r_emailaddress', 'r_basicprofile'],
   },
   function(token, tokenSecret, profile, done) {

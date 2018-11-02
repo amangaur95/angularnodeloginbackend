@@ -6,7 +6,7 @@ const socialLogin = require('../controllers/sociallogincontroller');
 passport.use(new GoogleStrategy({
     clientID: "371924117534-a2n94nnhksh54gb2sekih5r9pt14i7dr.apps.googleusercontent.com",
     clientSecret: "GxP8BaI8sHIpfoSfhDQSu-8Q",
-    callbackURL: "http://localhost:3000/auth/google/callback"
+    callbackURL: "https://angularnodelogin.herokuapp.com/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(profile,"ahhhhhhhhh",profile.emails[0].value)

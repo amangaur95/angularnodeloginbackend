@@ -24,12 +24,12 @@ router.get('/facebook',
   passportFacebook.authenticate('facebook'));
 
 router.get('/facebook/callback',
-  passportFacebook.authenticate('facebook', { failureRedirect: 'http://localhost:4200/login' }),
+  passportFacebook.authenticate('facebook', { failureRedirect: 'https://loginangular1.herokuapp.com/login' }),
   function(req, res) {
     let token = req.user;
     // Successful authentication, redirect home.
     // console.log(res.user,"from facebook callback");
-    res.redirect('http://localhost:4200/socialprofile/' + token);
+    res.redirect('https://loginangular1.herokuapp.com/socialprofile/' + token);
   });
 
 /* GOOGLE ROUTER */
@@ -40,10 +40,10 @@ router.get('/google',
 ] }));
 
 router.get('/google/callback',
-  passportGoogle.authenticate('google', { failureRedirect: 'http://localhost:4200/login' }),
+  passportGoogle.authenticate('google', { failureRedirect: 'https://loginangular1.herokuapp.com/login' }),
   function(req, res) {
     let token = req.user;
-    res.redirect('http://localhost:4200/socialprofile/' + token);
+    res.redirect('https://loginangular1.herokuapp.com/socialprofile/' + token);
   });
 
 /* TWITTER ROUTER */
@@ -51,17 +51,17 @@ router.get('/twitter',
   passportTwitter.authenticate('twitter', {scope: 'email'}));
 
 router.get('/twitter/callback',
-  passportTwitter.authenticate('twitter', { failureRedirect: 'http://localhost:4200/login' }),
+  passportTwitter.authenticate('twitter', { failureRedirect: 'https://loginangular1.herokuapp.com/login' }),
     function(req, res) {
       let token = req.user;
-      res.redirect('http://localhost:4200/socialprofile/' + token);
+      res.redirect('https://loginangular1.herokuapp.com/socialprofile/' + token);
 });
 
 
 passport.use(new LinkedInStrategy({
     clientID: "81uh8836c8uv82",
     clientSecret: "nPmi0D58WPNnRn4r",
-    callbackURL: "http://localhost:3000/auth/linkedin/callback",
+    callbackURL: "https://angularnodelogin.herokuapp.com//auth/linkedin/callback",
     scope: ['r_emailaddress', 'r_basicprofile'],
     state: true
   }, function(accessToken, refreshToken, profile, done) {
@@ -84,10 +84,10 @@ router.get('/linkedin',
   passport.authenticate('linkedin'));
 
 router.get('/linkedin/callback', 
-  passport.authenticate('linkedin', { failureRedirect: 'http://localhost:4200/login'}) ,
+  passport.authenticate('linkedin', { failureRedirect: 'https://loginangular1.herokuapp.com/login'}) ,
     function(req,res){
       let token = req.user;
-      res.redirect('http://localhost:4200/socialprofile/' + token);
+      res.redirect('https://loginangular1.herokuapp.com/socialprofile/' + token);
   });
 
 

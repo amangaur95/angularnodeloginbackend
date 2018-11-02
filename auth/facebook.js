@@ -6,7 +6,7 @@ const socialLogin = require('../controllers/sociallogincontroller');
 passport.use(new FacebookStrategy({
     clientID: "164660424479132",
     clientSecret: "ade61c0e86e4af5baf9fca52b4a062d0",
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    callbackURL: "https://angularnodelogin.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'name', 'gender', 'profileUrl', 'emails', 'photos'] // also 'email' is not working
   },
   function facebookHandler(accessToken, refreshToken, profile, done) {
