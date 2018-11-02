@@ -18,10 +18,10 @@ const app = express();
 app.use(cors());
 
 
-// mongoose.connect(config.database).then(
-//         () => {console.log('Database connected!!...') },
-//         err => { console.log('Can not connect to the database'+ err)}
-//       );
+ mongoose.connect(config.database).then(
+       () => {console.log('Database connected!!...') },
+         err => { console.log('Can not connect to the database'+ err)}
+      );
 
 
 
