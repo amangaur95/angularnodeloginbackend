@@ -12,9 +12,12 @@ const usersRouter = require('./routes/users');
 const userroute = require('./routes/user.route');
 const auth = require('./routes/auth');
 const session = require('express-session');
-app.use(cors());
 
 const app = express();
+
+app.use(cors());
+
+
 // mongoose.connect(config.database).then(
 //         () => {console.log('Database connected!!...') },
 //         err => { console.log('Can not connect to the database'+ err)}
