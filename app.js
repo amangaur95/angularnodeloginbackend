@@ -12,13 +12,16 @@ const usersRouter = require('./routes/users');
 const userroute = require('./routes/user.route');
 const auth = require('./routes/auth');
 const session = require('express-session');
+app.use(cors());
 
 const app = express();
-mongoose.connect(config.database).then(
-        () => {console.log('Database connected!!...') },
-        err => { console.log('Can not connect to the database'+ err)}
-      );
-  
+// mongoose.connect(config.database).then(
+//         () => {console.log('Database connected!!...') },
+//         err => { console.log('Can not connect to the database'+ err)}
+//       );
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -49,7 +52,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
