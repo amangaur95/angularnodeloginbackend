@@ -1,6 +1,7 @@
 var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy;
 var User = require('../models/User');
+const socialLogin = require('../controllers/sociallogincontroller');
 
 passport.serializeUser(function (user, fn) {
   fn(null, user);
