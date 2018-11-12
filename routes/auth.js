@@ -59,7 +59,7 @@ router.get('/twitter/callback',
 
 
 passport.use(new LinkedInStrategy({
-    clientID: "	86721oa8ii4dxm",
+    clientID: "86721oa8ii4dxm",
     clientSecret: "DB8bka0WeolsOIQ3",
     callbackURL: "https://angularnodelogin.herokuapp.com/auth/linkedin/callback",
     scope: ['r_emailaddress', 'r_basicprofile'],
