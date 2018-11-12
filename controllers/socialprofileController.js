@@ -1,15 +1,12 @@
 const User = require('../models/user.model');
 
 exports.socialProfile = function(req,res){
-    console.log(req.body.logintoken,"aaaaaaaaaaaaa")
     const sociallogintoken = req.body.logintoken;
     const token = getToken(req.headers)
-    console.log(token,"qqqqqqqqqqqqqqqq")
     if(token && token==sociallogintoken){
         User.find({token:sociallogintoken})
         .select({name:1,username:1})
         .exec(function(err,user){
-            console.log(user,"=================")
             if(err){
                 return res.json({
                     err:err,

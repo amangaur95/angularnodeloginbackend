@@ -76,32 +76,6 @@ exports.resetPassword = function(req,res){
                                 }
                             })
                         }
-                        
-                        // user.password=req.body.details.password,
-                        // user.resetPasswordExpires=1,
-                        // user.systemlogin=true,
-                        // user.save(function(err,data){
-                        //     if(err){
-                        //         res.json({
-                        //             err:err,
-                        //             success:false,
-                        //             failuremessage:{msg1:'Unable to reset password',msg2:'Something went wrong'}
-                        //         })
-                        //     }
-                        //     else{
-                        //         User.findByIdAndUpdate({_id:data._id},
-                        //             {
-                        //                 $push:{
-                        //                     provider:
-                        //                 }
-                        //             })
-                        //         res.json({
-                        //             code:200,
-                        //             success:true,
-                        //             successmessage:{msg1:'Password Reset Successfully',msg2:'You can Login Now'}
-                        //         })
-                        //     }
-                        // })
                     }
                     else{
                         return res.json({

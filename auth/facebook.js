@@ -1,6 +1,5 @@
-var passport = require('passport')
+const passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('../models/user.model');
 const socialLogin = require('../controllers/sociallogincontroller');
 
 passport.use(new FacebookStrategy({
@@ -20,30 +19,11 @@ passport.use(new FacebookStrategy({
       facebook_id:profile.id,
     }
     socialLogin.socialLogin(obj,function(err,data){
-      // console.log(err,data,"from socaasdasadsa")
       if(err){
         return done(err,null)
       }
       done(null,data)
     })
-    // const user = new User({
-    //   name: profile.displayName,
-    //   userid: profile.id,
-    //   email:email
-    // })
-
-    // user.save(function(err,user){
-    //   if(err){
-    //     return done(err);
-    //   }
-    //   done(null ,user);
-    // })
-    // User.find({userid: profile.id}, {name: profile.displayName,userid: profile.id,email:email }, function(err, user){
-    //   if(err){
-    //     return done(err);
-    //   }
-    //   done(null,user);
-    // })
   }
 ));
 

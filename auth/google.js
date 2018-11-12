@@ -1,6 +1,5 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var User = require('../models/user.model');
 const socialLogin = require('../controllers/sociallogincontroller');
 
 passport.use(new GoogleStrategy({
@@ -21,17 +20,6 @@ passport.use(new GoogleStrategy({
       }
       done(null,data);
     })
-    // const user = new User({
-    //   name: profile.displayName,
-    //   userid: profile.id, 
-    //   email:profile.emails[0].value 
-    // })
-    // user.save(function(err,user){
-    //   return done(err,user);
-    // })
-    // User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id, email:profile.emails[0].value }, function (err, user) {
-    //   return done(err, user);
-    // });
   }
 ));
 

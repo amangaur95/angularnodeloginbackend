@@ -17,13 +17,13 @@ const app = express();
 
 app.use(cors());
 
-
- mongoose.connect(config.database).then(
-       () => {console.log('Database connected!!...') },
-         err => { console.log('Can not connect to the database'+ err)}
-      );
-
-
+mongoose.connect(config.database).then(
+  () => {
+    console.log('Database connected!!...') 
+  },
+  err => { 
+    console.log('Can not connect to the database'+ err)
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,7 +54,6 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
   next();
 });
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

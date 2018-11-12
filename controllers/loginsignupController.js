@@ -56,7 +56,6 @@ exports.signUp = function(req,res){
         }
         else{
           if(validateEmail(email)){
-            console.log("from emailvalidation")
             const newUser =new User({
               name: req.body.name,
               username: req.body.username,
@@ -67,7 +66,6 @@ exports.signUp = function(req,res){
               systemlogin:true
             })
             newUser.save(function(err,data){
-              console.log("dfsdfsfddfsfdsfds")
               if (err) {
                 return res.json({success: false, msg: {msg1:'Something went wrong'
                   ,msg2:'Unable to create new user'}
@@ -136,9 +134,7 @@ exports.signIn = function(req,res){
             user.comparePassword(req.body.password, function (err, isMatch) {
               if (isMatch && !err) {
               // if user is found and password is right create a token
-              // var token = jwt.sign(user.toJSON(), config.secret);
               let token = jwt.sign({ id: user._id }, config.secret, {
-                // expiresIn: 10 // expires in 10 seconds
                 expiresIn: 86400 // expires in 24 hours
               });
                 User.update({

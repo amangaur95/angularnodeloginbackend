@@ -34,23 +34,6 @@ passport.use(new TwitterStrategy({
       }
       done(null, data);
     })
-    // const user= new User({
-    //   name:profile.displayName,
-    // })
-    // user.save(function(err,user){
-    //   if(err){
-    //     console.log(err);
-    //     return done(err);
-    //   }
-    //   done(null, user);
-    // });
-    // User.findOrCreate({name: profile.displayName}, {name: profile.displayName,userid: profile.id}, function(err, user) {
-    //   if (err) {
-    //     console.log(err); 
-    //     return done(err);
-    //   }
-    //   done(null, user);
-    // });
   }
 ));
 
