@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 
 exports.socialLogin = function(data, callback){
+    console.log(data,"form sociallogin");
     User.findOne({email:data.email})
     .exec(function(err,user){
         if(err){
