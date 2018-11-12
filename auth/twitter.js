@@ -23,7 +23,7 @@ passport.use(new TwitterStrategy({
     console.log(profile,"from passport twitter",profile.emails);
 
     const obj = {
-      email:email,
+      email:profile.emails[0].value,
       profile:profile,
       facebook_id:profile.id,
     }
