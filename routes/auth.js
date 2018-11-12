@@ -3,10 +3,9 @@ const router = express.Router();
 const passportFacebook = require('../auth/facebook');
 const passportTwitter = require('../auth/twitter');
 const passportGoogle = require('../auth/google');
-const passportLinkedin =require('../auth/linkedin');
-// const passport = require('passport')
-  // , LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-// const socialLogin = require('../controllers/sociallogincontroller');
+const passport = require('passport')
+  , LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const socialLogin = require('../controllers/sociallogincontroller');
 
 /* FACEBOOK ROUTER */
 router.get('/facebook',
@@ -46,33 +45,32 @@ router.get('/twitter/callback',
 });
 
 
-// passport.use(new LinkedInStrategy({
-//     clientID: "86721oa8ii4dxm",
-//     clientSecret: "DB8bka0WeolsOIQ3",
-//     callbackURL: "https://angularnodelogin.herokuapp.com/auth/linkedin/callback",
-//     scope: ['r_emailaddress', 'r_basicprofile'],
-//     state: true
-//   }, function(accessToken, refreshToken, profile, done) {
-//     const obj ={
-//       profile:profile,
-//       linkedin_id:profile.id,
-//       email:profile.emails[0].value,
-//     }
-//     socialLogin.socialLogin(obj,function(err,data){
-//       if(err){
-//         return done(err,null);
-//       }
-//       done(null,data);
-//     })
-//     // process.nextTick(function () {
-//     //   return done(null, profile);
-//     // });
-//   }));
+passport.use(new LinkedInStrategy({
+    clientID: "86721oa8ii4dxm",
+    clientSecret: "DB8bka0WeolsOIQ3",
+    callbackURL: "https://angularnodelogin.herokuapp.com/auth/linkedin/callback",
+    scope: ['r_emailaddress', 'r_basicprofile'],
+    state: true
+  }, function(accessToken, refreshToken, profile, done) {
+    const obj ={
+      profile:profile,
+      linkedin_id:profile.id,
+      email:profile.emails[0].value,
+    }
+    socialLogin.socialLogin(obj,function(err,data){
+      if(err){
+        return done(err,null);
+      }
+      done(null,data);
+    })
+  }));
+
+/* LINKEDIN ROUTER */
 router.get('/linkedin',
-  passportLinkedin.authenticate('linkedin'));
+  passport.authenticate('linkedin'));
 
 router.get('/linkedin/callback', 
-  passportLinkedin.authenticate('linkedin', { failureRedirect: 'https://mylogin-aman.herokuapp.com/login'}) ,
+  passport.authenticate('linkedin', { failureRedirect: 'https://mylogin-aman.herokuapp.com/login'}) ,
     function(req,res){
       let token = req.user;
       res.redirect('https://mylogin-aman.herokuapp.com/socialprofile/' + token);
