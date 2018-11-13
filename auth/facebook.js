@@ -9,10 +9,10 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'name', 'gender', 'profileUrl', 'emails', 'photos'] // also 'email' is not working
   },
   function facebookHandler(accessToken, refreshToken, profile, done) {
-    console.log(profile,"from facebookhandker")
-    if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
-      throw new UnprocessableEntity('No Email in Facebook');
-    }
+    // console.log(profile,"from facebookhandker")
+    // if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
+    //   throw new UnprocessableEntity('No Email in Facebook');
+    // }
     let email = profile.emails[0].value || profile._json.email;
     const obj = {
       email:email,
