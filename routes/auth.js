@@ -9,7 +9,7 @@ const socialLogin = require('../controllers/sociallogincontroller');
 
 /* FACEBOOK ROUTER */
 router.get('/facebook',
-  passportFacebook.authenticate('facebook', {scope: 'email'}));
+  passportFacebook.authenticate('facebook', { scope: ['email']}));
 
 router.get('/facebook/callback',
   passportFacebook.authenticate('facebook', { failureRedirect: 'https://loginangularnode.herokuapp.com/login' }),
