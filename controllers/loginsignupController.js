@@ -121,6 +121,7 @@ exports.signUp = function(req,res){
 }
 
 exports.signIn = function(req,res){
+  let remember_me = req.body.remember_me[0];
     User.findOne({
         email: req.body.email
       }, function(err, user) {
@@ -134,9 +135,17 @@ exports.signIn = function(req,res){
             user.comparePassword(req.body.password, function (err, isMatch) {
               if (isMatch && !err) {
               // if user is found and password is right create a token
-              let token = jwt.sign({ id: user._id }, config.secret, {
-                expiresIn: 86400 // expires in 24 hours
-              });
+              let token;
+              if(!remember_me){
+                token = jwt.sign({ id: user._id }, config.secret, {
+                  expiresIn: 86400 // expires in 24 hours
+                });
+              }
+              else{
+                token = jwt.sign({ id: user._id }, config.secret, {
+                  expiresIn: 2.592e+6 // expires in 30 days
+                });
+              } 
                 User.update({
                   _id: user._id
                 }, {
