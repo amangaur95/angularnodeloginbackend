@@ -12,11 +12,11 @@ router.get('/facebook',
   passportFacebook.authenticate('facebook'));
 
 router.get('/facebook/callback',
-  passportFacebook.authenticate('facebook', { failureRedirect: 'https://mylogin-aman.herokuapp.com/login' }),
+  passportFacebook.authenticate('facebook', { failureRedirect: 'https://loginangularnode.herokuapp.com/login' }),
   function(req, res) {
     let token = req.user;
     // Successful authentication, redirect home.
-    res.redirect('https://mylogin-aman.herokuapp.com/socialprofile/' + token);
+    res.redirect('https://loginangularnode.herokuapp.com/socialprofile/' + token);
   });
 
 /* GOOGLE ROUTER */
@@ -27,10 +27,10 @@ router.get('/google',
 ] }));
 
 router.get('/google/callback',
-  passportGoogle.authenticate('google', { failureRedirect: 'https://mylogin-aman.herokuapp.com/login' }),
+  passportGoogle.authenticate('google', { failureRedirect: 'https://loginangularnode.herokuapp.com/login' }),
   function(req, res) {
     let token = req.user;
-    res.redirect('https://mylogin-aman.herokuapp.com/socialprofile/' + token);
+    res.redirect('https://loginangularnode.herokuapp.com/socialprofile/' + token);
   });
 
 /* TWITTER ROUTER */
@@ -38,10 +38,10 @@ router.get('/twitter',
   passportTwitter.authenticate('twitter', {scope: 'email'}));
 
 router.get('/twitter/callback',
-  passportTwitter.authenticate('twitter', { failureRedirect: 'https://mylogin-aman.herokuapp.com/login' }),
+  passportTwitter.authenticate('twitter', { failureRedirect: 'https://loginangularnode.herokuapp.com/login' }),
     function(req, res) {
       let token = req.user;
-      res.redirect('https://mylogin-aman.herokuapp.com/socialprofile/' + token);
+      res.redirect('https://loginangularnode.herokuapp.com/socialprofile/' + token);
 });
 
 
@@ -70,10 +70,10 @@ router.get('/linkedin',
   passport.authenticate('linkedin'));
 
 router.get('/linkedin/callback', 
-  passport.authenticate('linkedin', { failureRedirect: 'https://mylogin-aman.herokuapp.com/login'}) ,
+  passport.authenticate('linkedin', { failureRedirect: 'https://loginangularnode.herokuapp.com/login'}) ,
     function(req,res){
       let token = req.user;
-      res.redirect('https://mylogin-aman.herokuapp.com/socialprofile/' + token);
+      res.redirect('https://loginangularnode.herokuapp.com/socialprofile/' + token);
   });
 
 module.exports = router;
