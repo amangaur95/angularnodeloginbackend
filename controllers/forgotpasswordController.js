@@ -46,8 +46,8 @@ exports.forgotPassword = function(req,res){
         const mailOptions = {
           from: 'amankumargaur1995@gmail.com',
           to:email,
-          subject: 'Please confirm account',
-          text: 'Hello,<br> Please Click on the link to verify your email.<br><a href='+resetpasswordlink+'>Click here to verify</a><br>This link is expire after a single click',
+          subject: 'Please Reset Password',
+          text: 'Hello,<br> Please Click on the link to reset your password.<br><a href='+resetpasswordlink+'>Click here to verify</a><br>This link is expire after a single click',
         };
           
         transporter.sendMail(mailOptions, function(error, info){
