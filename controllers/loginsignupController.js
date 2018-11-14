@@ -4,7 +4,7 @@ const randomstring = require('randomstring');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 
-let randomToken,host,verificationlink;
+let randomToken,hostlink,verificationlink;
 
 exports.signUp = function(req,res){
   email=req.body.email;
@@ -86,13 +86,14 @@ exports.signUp = function(req,res){
             })
             const transporter = nodemailer.createTransport({
               service: 'Gmail',
+              host: 'smtp.gmail.com',
               auth: {
                 user: 'agaur6768',
                 pass: 'gaur@123'
               }
             }); 
-            host="loginangularnode.herokuapp.com" 
-            verificationlink="https://"+host+"/emailverify/"+randomToken;
+            hostlink="loginangularnode.herokuapp.com" 
+            verificationlink="https://"+hostlink+"/emailverify/"+randomToken;
             const mailOptions = {
               from: 'agaur6768',
               to:email,
