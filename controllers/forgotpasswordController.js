@@ -41,10 +41,10 @@ exports.forgotPassword = function(req,res){
             pass: 'gaur@123'
           }
         });
-        host="agaur6768" 
+        host="loginangularnode.herokuapp.com" 
         resetpasswordlink="https://"+host+"/passwordreset/"+randomToken;
         const mailOptions = {
-          from: 'amankumargaur1995@gmail.com',
+          from: 'agaur6768',
           to:email,
           subject: 'Please Reset Password',
           html: 'Hello,<br> Please Click on the link to reset your password.<br><a href='+resetpasswordlink+'>Click here to verify</a><br>This link is expire after a single click',
