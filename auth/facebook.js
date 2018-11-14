@@ -20,11 +20,11 @@ passport.use(new FacebookStrategy({
         }
         if(!user){
           const newUser = new User({
-            facebook_id = profile.id,
-            name = profile.displayName,
-            provider = profile.provider,
-            isVerified = true,
-            sociallogin = true
+            facebook_id:profile.id,
+            name:profile.displayName,
+            provider:profile.provider,
+            isVerified:true,
+            sociallogin:true
           })
           newUser.save(function(err,user){
             if(err){
