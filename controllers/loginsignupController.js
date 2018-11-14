@@ -85,16 +85,16 @@ exports.signUp = function(req,res){
               }
             })
             const transporter = nodemailer.createTransport({
-              service: 'gmail',
+              service: 'Gmail',
               auth: {
-                user: 'agaur6768',
+                user: 'agaur6768@gmail.com',
                 pass: 'gaur@123'
               }
             }); 
             host="loginangularnode.herokuapp.com" 
             verificationlink="https://"+host+"/emailverify/"+randomToken;
             const mailOptions = {
-              from: 'agaur6768',
+              from: 'agaur6768@gmail.com',
               to:email,
               subject: 'Please confirm account',
               html: 'Hello,<br> Please Click on the link to verify your email.<br><a href='+verificationlink+'>Click here to verify</a><br>This link is expire after a single click',
