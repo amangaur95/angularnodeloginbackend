@@ -2,6 +2,7 @@ const passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 const socialLogin = require('../controllers/sociallogincontroller');
 const User = require('../models/user.model');
+const config = require('../config/database');
 const jwt = require('jsonwebtoken');
 
 passport.use(new FacebookStrategy({
