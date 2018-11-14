@@ -12,7 +12,6 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'name', 'gender', 'profileUrl', 'emails', 'photos'] // also 'email' is not working
   },
   function facebookHandler(accessToken, refreshToken, profile, done) {
-    console.log(profile,"from facebookhandker")
     if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
       User.findOne({facebook_id:profile.id})
       .exec(function(err,user){

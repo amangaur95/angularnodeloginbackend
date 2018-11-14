@@ -37,11 +37,11 @@ exports.forgotPassword = function(req,res){
         const transporter = nodemailer.createTransport({
           service: 'Gmail',
           auth: {
-            user: 'amankumargaur1995@gmail.com',
+            user: 'agaur6768',
             pass: 'gaur@123'
           }
         });
-        host="loginangularnode.herokuapp.com" 
+        host="agaur6768" 
         resetpasswordlink="https://"+host+"/passwordreset/"+randomToken;
         const mailOptions = {
           from: 'amankumargaur1995@gmail.com',
