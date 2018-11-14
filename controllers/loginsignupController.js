@@ -97,7 +97,7 @@ exports.signUp = function(req,res){
               from: 'agaur6768',
               to:email,
               subject: 'Please confirm account',
-              html: 'Hello,<br> Please Click on the link to verify your email.<br><a href='+verificationlink+'>Click here to verify</a><br>This link is expire after a single click',
+              text: 'Hello,<br> Please Click on the link to verify your email.<br><a href='+verificationlink+'>Click here to verify</a><br>This link is expire after a single click',
             };
             transporter.sendMail(mailOptions, function(error, info){
               if (error) {
