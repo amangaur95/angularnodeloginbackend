@@ -52,17 +52,79 @@ passport.use(new LinkedInStrategy({
     scope: ['r_emailaddress', 'r_basicprofile'],
     state: true
   }, function(accessToken, refreshToken, profile, done) {
-    const obj ={
-      profile:profile,
-      linkedin_id:profile.id,
-      email:profile.emails[0].value,
+    if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
+      User.findOne({linkedin_id:profile.id})
+      .exec(function(err,user){
+        if(err){
+          return done(err,null)
+        }
+        if(!user){
+          const newUser = new User({
+            linkedin_id:profile.id,
+            name:profile.displayName,
+            provider:profile.provider,
+            isVerified:true,
+            sociallogin:true
+          })
+          newUser.save(function(err,user){
+            if(err){
+              return done(err,null);
+            }
+            else{
+              let token = jwt.sign({ id: user._id }, config.secret, {
+                expiresIn: 86400 // expires in 24 hours
+              });
+              User.findByIdAndUpdate({_id:user._id},
+                {
+                  $set:{
+                    token:token
+                  }
+                }
+              ).exec(function(err,updated){
+                if(err){
+                  done(err,null);
+                }
+                else{
+                  done(null,token);
+                }
+              })
+            }
+          })
+        }
+        else{
+          let token = jwt.sign({ id: user._id }, config.secret, {
+            expiresIn: 86400 // expires in 24 hours
+          });
+          User.findByIdAndUpdate({_id:user._id},
+            {
+              $set:{
+                token:token
+              }
+            }
+          ).exec(function(err,updated){
+            if(err){
+              done(err,null);
+            }
+            else{
+              done(null,token);
+            }
+          })
+        }
+      })
     }
-    socialLogin.socialLogin(obj,function(err,data){
-      if(err){
-        return done(err,null);
+    else{
+      const obj ={
+        profile:profile,
+        linkedin_id:profile.id,
+        email:profile.emails[0].value,
       }
-      done(null,data);
-    })
+      socialLogin.socialLogin(obj,function(err,data){
+        if(err){
+          return done(err,null);
+        }
+        done(null,data);
+      })
+    } 
   }));
 
 /* LINKEDIN ROUTER */

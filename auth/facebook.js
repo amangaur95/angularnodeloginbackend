@@ -71,7 +71,6 @@ passport.use(new FacebookStrategy({
           })
         }
       })
-      // throw new UnprocessableEntity('No Email in Facebook');
     }
     else{
       let email = profile.emails[0].value || profile._json.email;

@@ -8,7 +8,6 @@ passport.use(new GoogleStrategy({
     callbackURL: "https://angularnodelogin.herokuapp.com/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log(profile,"ahhhhhhhhh",profile.emails[0].value)
     const obj = {
       email:profile.emails[0].value,
       profile:profile,
