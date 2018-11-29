@@ -45,7 +45,7 @@ exports.socialLogin = function(data, callback){
         }
         else{
             let token = jwt.sign({ id: user._id }, config.secret, {
-                expiresIn: 10 // expires in 24 hours
+                expiresIn: 86400 // expires in 24 hours
             });
             let socialLoginFlag = false;
             if(user.facebook_id == data.facebook_id || user.google_id==data.google_id || user.twitter_id==data.twitter_id || user.linkedin_id==data.linkedin_id){
