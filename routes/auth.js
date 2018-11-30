@@ -63,7 +63,6 @@ passport.use(new LinkedInStrategy({
           return done(err,null)
         }
         if(!user){
-          console.log("asjdhsadjkasd")
           const newUser = new User({
             linkedin_id:profile.id,
             name:profile.displayName,
@@ -118,10 +117,11 @@ passport.use(new LinkedInStrategy({
       })
     }
     else{
+      let email = profile.emails[0].value || profile._json.email;
       const obj ={
         profile:profile,
         linkedin_id:profile.id,
-        email:profile.emails[0].value,
+        email:email,
       }
       socialLogin.socialLogin(obj,function(err,data){
         if(err){
