@@ -97,7 +97,7 @@ passport.use(new LinkedInStrategy({
         }
         else{
           let token = jwt.sign({ id: user._id }, config.secret, {
-            expiresIn: 86400 // expires in 24 hours
+            expiresIn: 10 // expires in 24 hours
           });
           User.findByIdAndUpdate({_id:user._id},
             {
