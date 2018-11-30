@@ -3,8 +3,8 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const socialLogin = require('../controllers/sociallogincontroller');
 
 passport.use(new GoogleStrategy({
-    clientID: " ",  // Enter your google clientid
-    clientSecret: " ", // Enter your google clientSecret
+    clientID: "358256820106-j7ulil6f3tjuohb3d8jnd2shp3u3kkkk.apps.googleusercontent.com",  
+    clientSecret: "3qdl8WC-7osC54oSARKuo8nz",
     callbackURL: "https://angularnodelogin.herokuapp.com/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
