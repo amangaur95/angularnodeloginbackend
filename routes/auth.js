@@ -59,11 +59,11 @@ passport.use(new LinkedInStrategy({
     if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
       User.findOne({linkedin_id:profile.id})
       .exec(function(err,user){
-        console.log(user,"+++++++=")
         if(err){
           return done(err,null)
         }
         if(!user){
+          console.log("asjdhsadjkasd")
           const newUser = new User({
             linkedin_id:profile.id,
             name:profile.displayName,
