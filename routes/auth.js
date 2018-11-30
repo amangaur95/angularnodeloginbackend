@@ -7,6 +7,7 @@ const passport = require('passport')
   , LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const socialLogin = require('../controllers/sociallogincontroller');
 const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
 
 /* FACEBOOK ROUTER */
 router.get('/facebook',
@@ -57,6 +58,7 @@ passport.use(new LinkedInStrategy({
     if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
       User.findOne({linkedin_id:profile.id})
       .exec(function(err,user){
+        console.log(user,"+++++++=")
         if(err){
           return done(err,null)
         }
