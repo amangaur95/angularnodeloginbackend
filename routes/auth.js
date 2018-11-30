@@ -96,6 +96,7 @@ passport.use(new LinkedInStrategy({
           })
         }
         else{
+          console.log("kjhkjhkj")
           let token = jwt.sign({ id: user._id }, config.secret, {
             expiresIn: 86400 // expires in 24 hours
           });
@@ -118,6 +119,7 @@ passport.use(new LinkedInStrategy({
     }
     else{
       let email = profile.emails[0].value || profile._json.email;
+      console.log(email,"++++++++++")
       const obj ={
         profile:profile,
         linkedin_id:profile.id,
