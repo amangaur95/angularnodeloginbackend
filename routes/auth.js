@@ -55,7 +55,7 @@ passport.use(new LinkedInStrategy({
     scope: ['r_emailaddress', 'r_basicprofile'],
     state: true
   }, function(accessToken, refreshToken, profile, done) {
-    console.log(profile,"============")
+    console.log(profile.emails[0].value,"============")
     if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
       User.findOne({linkedin_id:profile.id})
       .exec(function(err,user){
