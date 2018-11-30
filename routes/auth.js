@@ -56,7 +56,7 @@ passport.use(new LinkedInStrategy({
     state: true
   }, function(accessToken, refreshToken, profile, done) {
     console.log(profile.emails[0].value,"============")
-    if (!profile.emails || !profile.emails[0].value || !profile._json.email) {
+    if (!profile.emails[0].value) {
       User.findOne({linkedin_id:profile.id})
       .exec(function(err,user){
         if(err){
@@ -96,7 +96,6 @@ passport.use(new LinkedInStrategy({
           })
         }
         else{
-          console.log("kjhkjhkj")
           let token = jwt.sign({ id: user._id }, config.secret, {
             expiresIn: 86400 // expires in 24 hours
           });
