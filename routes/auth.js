@@ -6,6 +6,7 @@ const passportGoogle = require('../auth/google');
 const passport = require('passport')
   , LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const socialLogin = require('../controllers/sociallogincontroller');
+const User = require('../models/user.model');
 
 /* FACEBOOK ROUTER */
 router.get('/facebook',
