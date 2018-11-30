@@ -8,6 +8,7 @@ const passport = require('passport')
 const socialLogin = require('../controllers/sociallogincontroller');
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
+const config = require('../config/database');
 
 /* FACEBOOK ROUTER */
 router.get('/facebook',
