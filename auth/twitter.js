@@ -16,8 +16,8 @@ passport.deserializeUser(function (id, fn) {
 });
 
 passport.use(new TwitterStrategy({
-    consumerKey: "ntykZzV4c3SxEE9jvb1vgO01u",
-    consumerSecret: "GqfSj7zjDFGjN2WQAXEPFssIoCfbCbIxo2cKDl6JvWIVifQPCb",
+    consumerKey: "  ",  // Enter your twitter consumerKey
+    consumerSecret: "  ",  // Enter your twitter consumerSecret
     callbackURL: "https://angularnodelogin.herokuapp.com/auth/twitter/callback",
     userProfileURL: 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
     includeEmail: true
