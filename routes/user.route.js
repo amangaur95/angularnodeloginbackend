@@ -16,7 +16,7 @@ router.post('/signup', loginsignupController.signUp);
 router.post('/signin', loginsignupController.signIn);
 router.get('/verify/:id', emailverifyController.emailVerify);
 router.post('/forgotpassword', forgotpasswordController.forgotPassword);
-router.get('/getprofile', jwtAuth, profileController.getProfile);
+router.get('/getprofile/:id', jwtAuth, profileController.getProfile);
 router.post('/resetpassword' , resetpasswordController.resetPassword);
 router.post('/sociallogin', socialloginController.socialLogin);
 router.post('/socialprofile', jwtAuth, socialprofileController.socialProfile);
