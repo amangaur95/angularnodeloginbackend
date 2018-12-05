@@ -87,14 +87,14 @@ exports.signUp = function(req,res){
             const transporter = nodemailer.createTransport({
               service: 'Gmail',
               auth: {
-                user: '',  //Enter your gmail id
-                pass: ''  // Enter your gmail password
+                user: 'agaur6768@gmail.com',  //Enter your gmail id
+                pass: 'gaur@123'  // Enter your gmail password
               }
             }); 
             host="loginangularnode.herokuapp.com" 
             verificationlink="https://"+host+"/emailverify/"+randomToken;
             const mailOptions = {
-              from: '',  // Enter your gmail id
+              from: 'agaur6768@gmail.com',  // Enter your gmail id
               to:email,
               subject: 'Please confirm account',
               html: 'Hello,<br> Please Click on the link to verify your email.<br><a href='+verificationlink+'>Click here to verify</a><br>This link is expire after a single click',
